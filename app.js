@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 
-const members = require('./api/members');
+let members = require('./api/members');
 
 //전처리수행(미들웨어middleware)
 app.use(express.json());
@@ -43,6 +43,17 @@ app.put('/api/members/:id', (req, res) => {
       member[prop] = newInfo[prop];
     });
     res.send(member);
+  } else {
+    res.status(404).send({ message: 'There is no member with the id!' });
+  }
+});
+
+app.delete('/api/members/:id', (req, res) => {
+  const { id } = req.params;
+  const membersCount = members.length;
+  members = members.filter((member) => member.id !== Number(id));
+  if (members.length < membersCount) {
+    res.send({ message: 'Delete' });
   } else {
     res.status(404).send({ message: 'There is no member with the id!' });
   }
