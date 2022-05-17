@@ -1,6 +1,8 @@
-GET http://localhost:3000/api/members
-
-###
+### GET
+GET http://localhost:3000/api/members/100
+### 없는 멤버 조회 테스트
+GET http://localhost:3000/api/members/100
+### POST
 POST http://localhost:3000/api/members
 Content-Type: application/json
 
