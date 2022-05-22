@@ -6,43 +6,45 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       team: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       position: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       emailAddress: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       phoneNumber: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       admissionDate: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       birthday: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       profileImage: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Members');
-  }
+  },
 };
