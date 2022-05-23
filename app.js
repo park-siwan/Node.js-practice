@@ -2,7 +2,10 @@ const express = require('express');
 
 const app = express();
 
-let members = require('./api/members');
+// let members = require('./api/members');
+const db = require('./models');
+
+const { Member } = db;
 
 //전처리수행(미들웨어middleware)
 app.use(express.json());
