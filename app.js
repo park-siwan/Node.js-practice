@@ -21,9 +21,10 @@ app.get('/api/members', async (req, res) => {
   }
 });
 
-app.get('/api/members/:id', (req, res) => {
+app.get('/api/members/:id', async (req, res) => {
   const { id } = req.params;
-  const member = members.find((m) => m.id === Number(id));
+  // const member = members.find((m) => m.id === Number(id));
+  const member = await Member.findOne({ where: { id } });
   if (member) {
     res.send(member);
   } else {
